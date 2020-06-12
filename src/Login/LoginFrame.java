@@ -60,12 +60,13 @@ public class LoginFrame {
                 try {
                     //UIManager.setLookAndFeel(new org.jvnet.substance.skin.SubstanceBusinessBlackSteelLookAndFeel());
                     BeautyEyeLNFHelper.frameBorderStyle = BeautyEyeLNFHelper.FrameBorderStyle.osLookAndFeelDecorated;
+/*
                     UIManager.put("RootPane.setButtonVisible",false);
                     BeautyEyeLNFHelper.debug=true;
                     BeautyEyeLNFHelper.translucencyAtFrameInactive=false;
-                    BeautyEyeLNFHelper.launchBeautyEyeLNF();
+                    BeautyEyeLNFHelper.launchBeautyEyeLNF();*/
 
-                    //org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper.launchBeautyEyeLNF();
+                    org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper.launchBeautyEyeLNF();
                     LoginFrame window = new LoginFrame();
 
 
