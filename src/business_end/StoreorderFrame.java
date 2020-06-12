@@ -1,9 +1,13 @@
 package business_end;
+
 import Login.LoginFrame;
+import control_packet.TableRefresh;
+import data.Order_goods;
+import data.Store;
+import data.Userorder;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
-import data.*;
-import control_packet.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.IOException;
@@ -13,7 +17,7 @@ import java.util.List;
 public class StoreorderFrame {
     public JFrame frame;
     private JTable table;
-	private int store_id ;
+    private int store_id ;
     /**
      * Launch the application.
      */
@@ -38,7 +42,7 @@ public class StoreorderFrame {
         JButton btnNewButton_7 = new JButton("拒绝接单");
         btnNewButton_7.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-            	btn_rejectOrderActionPerformed(e);
+                btn_rejectOrderActionPerformed(e);
             }
         });
         btnNewButton_7.setFont(new Font("宋体", Font.BOLD, 16));
@@ -49,7 +53,7 @@ public class StoreorderFrame {
         btnNewButton_8.setFont(new Font("宋体", Font.BOLD, 16));
         btnNewButton_8.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-            	btn_acceptOrderActionPerformed(e);
+                btn_acceptOrderActionPerformed(e);
             }
         });
         btnNewButton_8.setBounds(763, 152, 111, 30);
@@ -58,7 +62,7 @@ public class StoreorderFrame {
         JButton btnNewButton_9 = new JButton("开始配送");
         btnNewButton_9.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-            	 btn_deliverOrderActionPerformed(e);
+                btn_deliverOrderActionPerformed(e);
             }
         });
         btnNewButton_9.setFont(new Font("宋体", Font.BOLD, 16));
@@ -68,7 +72,7 @@ public class StoreorderFrame {
         JButton btnNewButton_10 = new JButton("送达");
         btnNewButton_10.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-            	btn_finishOrderActionPerformed(e);
+                btn_finishOrderActionPerformed(e);
             }
         });
         btnNewButton_10.setFont(new Font("宋体", Font.BOLD, 16));
@@ -77,9 +81,9 @@ public class StoreorderFrame {
 
         JButton btnNewButton = new JButton("退款");//退款
         btnNewButton.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        		btn_refundActionPerformed(e);
-        	}
+            public void actionPerformed(ActionEvent e) {
+                btn_refundActionPerformed(e);
+            }
         });
         btnNewButton.setFont(new Font("宋体", Font.BOLD, 16));
         btnNewButton.setBounds(764, 358, 110, 30);
@@ -202,16 +206,16 @@ public class StoreorderFrame {
 
 
         JMenu mnNewMenu_4 = new JMenu("刷新");//刷新菜单项
-        
+
         mnNewMenu_4.setFont(new Font("宋体", Font.BOLD, 16));
         menuBar.add(mnNewMenu_4);
-        
+
         JMenuItem mntmNewMenuItem_7 = new JMenuItem("刷新");
         mntmNewMenuItem_7.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        	  List<Userorder> userorders = Userorder.getStoreOrder(store_id);
-       		  TableRefresh.refreshStore_UserorderTable(userorders, table);
-        	}
+            public void actionPerformed(ActionEvent e) {
+                List<Userorder> userorders = Userorder.getStoreOrder(store_id);
+                TableRefresh.refreshStore_UserorderTable(userorders, table);
+            }
         });
         mntmNewMenuItem_7.setFont(new Font("宋体", Font.BOLD, 16));
         mnNewMenu_4.add(mntmNewMenuItem_7);
@@ -231,11 +235,11 @@ public class StoreorderFrame {
      * 拒单
      * */
     private void btn_rejectOrderActionPerformed(ActionEvent e) {
-    	DefaultTableModel dtm=(DefaultTableModel) table.getModel();	
-    	String neworderstatus = "商家已拒单";
-    	int valuecolumn=dtm.findColumn("是否选中");
-		int ordernumcolumn = dtm.findColumn("订单号");
-		int orderstatuscolumn=dtm.findColumn("订单状态");
+        DefaultTableModel dtm=(DefaultTableModel) table.getModel();
+        String neworderstatus = "商家已拒单";
+        int valuecolumn=dtm.findColumn("是否选中");
+        int ordernumcolumn = dtm.findColumn("订单号");
+        int orderstatuscolumn=dtm.findColumn("订单状态");
         for (int i = 0; i < table.getRowCount(); i++) {
             String getvalue = table.getValueAt(i, valuecolumn).toString();
             String ordernum = table.getValueAt(i, ordernumcolumn).toString();
@@ -249,21 +253,21 @@ public class StoreorderFrame {
                 } else
                     JOptionPane.showMessageDialog(null, "拒单失败！");
             }
-        }   	
+        }
     }
     /**
      * 接单
      * */
     private void btn_acceptOrderActionPerformed(ActionEvent e) {
-    	DefaultTableModel dtm=(DefaultTableModel) table.getModel();	
-    	String neworderstatus = "商家已接单";
-    	int valuecolumn=dtm.findColumn("是否选中");
-		int ordernumcolumn = dtm.findColumn("订单号");
-		int orderstatuscolumn=dtm.findColumn("订单状态");
-		for (int i = 0; i < table.getRowCount(); i++) {
-	        String getvalue = table.getValueAt(i, valuecolumn).toString();
-	        String ordernum = table.getValueAt(i, ordernumcolumn).toString();
-	        String orderstatus = table.getValueAt(i, orderstatuscolumn).toString();
+        DefaultTableModel dtm=(DefaultTableModel) table.getModel();
+        String neworderstatus = "商家已接单";
+        int valuecolumn=dtm.findColumn("是否选中");
+        int ordernumcolumn = dtm.findColumn("订单号");
+        int orderstatuscolumn=dtm.findColumn("订单状态");
+        for (int i = 0; i < table.getRowCount(); i++) {
+            String getvalue = table.getValueAt(i, valuecolumn).toString();
+            String ordernum = table.getValueAt(i, ordernumcolumn).toString();
+            String orderstatus = table.getValueAt(i, orderstatuscolumn).toString();
             if (getvalue == "true") {
                 if (orderstatus.equals("用户已付款")) {
                     Userorder.updateOrderstatus(ordernum, neworderstatus);
@@ -277,17 +281,17 @@ public class StoreorderFrame {
     }
     /**
      * 配送
-     * */   
+     * */
     public void btn_deliverOrderActionPerformed(ActionEvent e) {
-    	DefaultTableModel dtm=(DefaultTableModel) table.getModel();	
-    	String neworderstatus = "配送中";
-    	int valuecolumn=dtm.findColumn("是否选中");
-		int ordernumcolumn = dtm.findColumn("订单号");
-		int orderstatuscolumn=dtm.findColumn("订单状态");
-		for (int i = 0; i < table.getRowCount(); i++) {
-	        String getvalue = table.getValueAt(i, valuecolumn).toString();
-	        String ordernum = table.getValueAt(i, ordernumcolumn).toString();
-	        String orderstatus = table.getValueAt(i, orderstatuscolumn).toString();
+        DefaultTableModel dtm=(DefaultTableModel) table.getModel();
+        String neworderstatus = "配送中";
+        int valuecolumn=dtm.findColumn("是否选中");
+        int ordernumcolumn = dtm.findColumn("订单号");
+        int orderstatuscolumn=dtm.findColumn("订单状态");
+        for (int i = 0; i < table.getRowCount(); i++) {
+            String getvalue = table.getValueAt(i, valuecolumn).toString();
+            String ordernum = table.getValueAt(i, ordernumcolumn).toString();
+            String orderstatus = table.getValueAt(i, orderstatuscolumn).toString();
             if (getvalue == "true") {
                 if (orderstatus.equals("商家已接单")) {
                     Userorder.updateOrderstatus(ordernum, neworderstatus);
@@ -303,55 +307,55 @@ public class StoreorderFrame {
      * 送达
      * */
     public void btn_finishOrderActionPerformed(ActionEvent e) {
-    	DefaultTableModel dtm=(DefaultTableModel) table.getModel();	
-    	String neworderstatus = "订单已完成";
-    	int valuecolumn=dtm.findColumn("是否选中");
-    	int ordernumcolumn = dtm.findColumn("订单号");
-    	int orderstatuscolumn=dtm.findColumn("订单状态");
-    	for (int i = 0; i < table.getRowCount(); i++) {
-    		String getvalue = table.getValueAt(i, valuecolumn).toString();
-    		String ordernum = table.getValueAt(i, ordernumcolumn).toString();
-    		String orderstatus = table.getValueAt(i, orderstatuscolumn).toString();
-	        if (getvalue == "true") {
-	            if (orderstatus.equals("配送中")) {
-	                Userorder.updateOrderstatus(ordernum, neworderstatus);//改订单状态为已完成
-	                List<Order_goods>list=Order_goods.getOrder_GoodsList(ordernum);	//获取订单和商品信息关联表
-	                for (int j = 0; j < list.size(); j++) {
-				        int store_id = list.get(j).store_id;
-				        int goods_id = list.get(j).goods_id;
-				        int buynum = list.get(j).buynum;
-				        Store.upDateGoodsSaleNum(store_id, goods_id, buynum);//改商品的销售量
-				    }           												
-	                JOptionPane.showMessageDialog(null, "订单已完成！");
-	                List<Userorder> userorders = Userorder.getStoreOrder(store_id);
-	                TableRefresh.refreshStore_UserorderTable(userorders, table);
-	            } else
-	                JOptionPane.showMessageDialog(null, "无效操作！");
-	        }
-	    }
+        DefaultTableModel dtm=(DefaultTableModel) table.getModel();
+        String neworderstatus = "订单已完成";
+        int valuecolumn=dtm.findColumn("是否选中");
+        int ordernumcolumn = dtm.findColumn("订单号");
+        int orderstatuscolumn=dtm.findColumn("订单状态");
+        for (int i = 0; i < table.getRowCount(); i++) {
+            String getvalue = table.getValueAt(i, valuecolumn).toString();
+            String ordernum = table.getValueAt(i, ordernumcolumn).toString();
+            String orderstatus = table.getValueAt(i, orderstatuscolumn).toString();
+            if (getvalue == "true") {
+                if (orderstatus.equals("配送中")) {
+                    Userorder.updateOrderstatus(ordernum, neworderstatus);//改订单状态为已完成
+                    List<Order_goods>list=Order_goods.getOrder_GoodsList(ordernum);	//获取订单和商品信息关联表
+                    for (int j = 0; j < list.size(); j++) {
+                        int store_id = list.get(j).store_id;
+                        int goods_id = list.get(j).goods_id;
+                        int buynum = list.get(j).buynum;
+                        Store.upDateGoodsSaleNum(store_id, goods_id, buynum);//改商品的销售量
+                    }
+                    JOptionPane.showMessageDialog(null, "订单已完成！");
+                    List<Userorder> userorders = Userorder.getStoreOrder(store_id);
+                    TableRefresh.refreshStore_UserorderTable(userorders, table);
+                } else
+                    JOptionPane.showMessageDialog(null, "无效操作！");
+            }
+        }
     }
     /**
      * 退款
      * */
     public void btn_refundActionPerformed(ActionEvent e) {
-    	DefaultTableModel dtm=(DefaultTableModel) table.getModel();	
-    	int valuecolumn=dtm.findColumn("是否选中");
-		int ordernumcolumn = dtm.findColumn("订单号");
-		for (int i = 0; i < table.getRowCount(); i++) {
-	        String getvalue = table.getValueAt(i, valuecolumn).toString();
-	        String ordernum = table.getValueAt(i, ordernumcolumn).toString();
-	        if (getvalue == "true") {
-	        	String total_price=String.valueOf(Userorder.getTotal_price(ordernum));//获取总价格
-					String url="http://47.95.200.90:8080/se_wm/refund.jsp?";
-					String finalurl=url+"refund_ordernum="+ordernum+"&refund_total_price="+total_price;
-	             Desktop desktop = Desktop.getDesktop();
-					try {
-						desktop.browse(new URI(finalurl));
-					} catch (IOException | URISyntaxException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}   	
-	        }
-	    }
-   }
+        DefaultTableModel dtm=(DefaultTableModel) table.getModel();
+        int valuecolumn=dtm.findColumn("是否选中");
+        int ordernumcolumn = dtm.findColumn("订单号");
+        for (int i = 0; i < table.getRowCount(); i++) {
+            String getvalue = table.getValueAt(i, valuecolumn).toString();
+            String ordernum = table.getValueAt(i, ordernumcolumn).toString();
+            if (getvalue == "true") {
+                String total_price=String.valueOf(Userorder.getTotal_price(ordernum));//获取总价格
+                String url="http://47.95.200.90:8080/se_wm/refund.jsp?";
+                String finalurl=url+"refund_ordernum="+ordernum+"&refund_total_price="+total_price;
+                Desktop desktop = Desktop.getDesktop();
+                try {
+                    desktop.browse(new URI(finalurl));
+                } catch (IOException | URISyntaxException e1) {
+                    // TODO Auto-generated catch block
+                    e1.printStackTrace();
+                }
+            }
+        }
+    }
 }

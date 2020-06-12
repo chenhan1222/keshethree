@@ -1,12 +1,12 @@
 package data;
 
-import java.util.List;
-
+import JDBCUtil.JDBCUtils;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
-import JDBCUtil.JDBCUtils;
 import rowmapper.StoreRowMapper;
 import rowmapper.StudentRowMapper;
+
+import java.util.List;
 
 /*学生类*/
 public class Student {
@@ -114,7 +114,7 @@ public class Student {
      */
     public static void addStudent(String s_usernum, String s_password, String s_apartment_num, String s_dormitory_num, String s_department_name, String s_class_num, String s_name) {
         String sql = "insert into Student values(?,?,?,?,?,?,?,?,?)";
-        template.update(sql, s_usernum, s_password, s_apartment_num, s_dormitory_num, s_department_name, s_class_num, s_name, "无", "无");
+        template.update(sql, s_usernum, s_password, s_apartment_num, s_dormitory_num,  s_department_name,s_class_num, s_name, "无", "无");
     }
 
     /**

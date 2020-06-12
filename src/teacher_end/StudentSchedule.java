@@ -36,7 +36,7 @@ public class StudentSchedule {
     private JTextField textField_3;
     private JLabel lblNewLabel001_1_5;
     private JTextField textField_4;
-    private DatePicker datepick;
+     DatePicker datepick;
 
     /**
      * Launch the application.
