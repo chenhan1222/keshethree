@@ -1,16 +1,19 @@
 package Login;
-import control_packet.FrameChange;
-import data.*;
-import management_end.ManageMainFrame;
-import student_end.StudentMainFrame;
-import javax.swing.*;
 
 import business_end.BusinessMainFrame;
+import control_packet.FrameChange;
+import data.Login;
+import data.User_store;
+import management_end.ManageMainFrame;
+import org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper;
+import student_end.StudentMainFrame;
 import teacher_end.TeacherFrame;
 
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 public class LoginFrame {
     public static String usernum;//用户名
     public static int store_id;//商店号
@@ -22,11 +25,12 @@ public class LoginFrame {
     private JRadioButton storeRadioButton;
     private JRadioButton teacherRadioButton;
     private JButton btnNewButton_2;
-  
+
     /**
      * Create the application.
      */
     public LoginFrame() {
+
         initialize();
     }
 
@@ -55,8 +59,16 @@ public class LoginFrame {
                 JDialog.setDefaultLookAndFeelDecorated(true);
                 try {
                     //UIManager.setLookAndFeel(new org.jvnet.substance.skin.SubstanceBusinessBlackSteelLookAndFeel());
-                    UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+                    BeautyEyeLNFHelper.frameBorderStyle = BeautyEyeLNFHelper.FrameBorderStyle.osLookAndFeelDecorated;
+                    UIManager.put("RootPane.setButtonVisible",false);
+                    BeautyEyeLNFHelper.debug=true;
+                    BeautyEyeLNFHelper.translucencyAtFrameInactive=false;
+                    BeautyEyeLNFHelper.launchBeautyEyeLNF();
+
+                    //org.jb2011.lnf.beautyeye.BeautyEyeLNFHelper.launchBeautyEyeLNF();
                     LoginFrame window = new LoginFrame();
+
+
                     window.Loginframe.setVisible(true);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -75,7 +87,7 @@ public class LoginFrame {
         Loginframe.setBounds(100, 100, 547, 413);
         Loginframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         Loginframe.getContentPane().setLayout(null);
-        
+
         FrameChange.setCenter(Loginframe);
         textField = new JTextField();
         textField.setBounds(147, 121, 243, 25);
@@ -105,7 +117,7 @@ public class LoginFrame {
         btnNewButton.setText("登陆");
         btnNewButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-            	btn_userLoginActionPerformed(e);
+                btn_userLoginActionPerformed(e);
             }
         });
         btnNewButton.setFont(new Font("宋体", Font.BOLD, 16));
@@ -129,53 +141,53 @@ public class LoginFrame {
         lblNewLabel_2.setFont(new Font("宋体", Font.BOLD, 20));
         lblNewLabel_2.setBounds(78, 25, 342, 70);
         Loginframe.getContentPane().add(lblNewLabel_2);
-        
+
         managerRadioButton = new JRadioButton("管理员");
         managerRadioButton.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        		btn_managerSelectActionPerformed(e);
-        	}
+            public void actionPerformed(ActionEvent e) {
+                btn_managerSelectActionPerformed(e);
+            }
         });
         managerRadioButton.setFont(new Font("宋体", Font.BOLD, 16));
         managerRadioButton.setBounds(45, 252, 99, 23);
         Loginframe.getContentPane().add(managerRadioButton);
-        
+
         teacherRadioButton = new JRadioButton("教师");
         teacherRadioButton.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        		btn_teacherSelectActionPerformed(e);
-        	}
+            public void actionPerformed(ActionEvent e) {
+                btn_teacherSelectActionPerformed(e);
+            }
         });
         teacherRadioButton.setFont(new Font("宋体", Font.BOLD, 16));
         teacherRadioButton.setBounds(163, 252, 74, 23);
         Loginframe.getContentPane().add(teacherRadioButton);
-        
+
         storeRadioButton = new JRadioButton("商家");
         storeRadioButton.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        		btn_storeSelectActionPerformed(e);
-        	}
+            public void actionPerformed(ActionEvent e) {
+                btn_storeSelectActionPerformed(e);
+            }
         });
         storeRadioButton.setFont(new Font("宋体", Font.BOLD, 16));
         storeRadioButton.setBounds(260, 252, 74, 23);
         Loginframe.getContentPane().add(storeRadioButton);
-        
+
         studentRadioButton = new JRadioButton("学生");
         studentRadioButton.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        		btn_studentSelectActionPerformed(e);
-        	}
+            public void actionPerformed(ActionEvent e) {
+                btn_studentSelectActionPerformed(e);
+            }
         });
         studentRadioButton.setFont(new Font("宋体", Font.BOLD, 16));
         studentRadioButton.setBounds(352, 252, 68, 23);
         Loginframe.getContentPane().add(studentRadioButton);
-        
+
         btnNewButton_2 = new JButton("改密");
         btnNewButton_2.setIcon(new ImageIcon("src/images/修改.png"));
         btnNewButton_2.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        		btn_modifyPasswordActionPerformed(e);
-        	}
+            public void actionPerformed(ActionEvent e) {
+                btn_modifyPasswordActionPerformed(e);
+            }
         });
         btnNewButton_2.setFont(new Font("宋体", Font.BOLD, 16));
         btnNewButton_2.setBounds(326, 305, 100, 34);
@@ -183,145 +195,138 @@ public class LoginFrame {
 
     }
 
-   /**************************************消息响应函数***************************************/
-   /**
-        * 用户登陆
-    * */
+    /**************************************消息响应函数***************************************/
+    /**
+     * 用户登陆
+     */
     private void btn_userLoginActionPerformed(ActionEvent e) {
-    	String usernum=textField.getText();
+        String usernum = textField.getText();
         String password = String.valueOf(passwordField.getPassword());
         int returnnum;
-    	if(studentRadioButton.isSelected())
-    	{ 	
-    		 if (usernum.equals("")||password.equals(""))
-    			 JOptionPane.showMessageDialog(null, "输入不能为空请重新输入！");
-    		 else
-    		 {
-    			 returnnum=Login.studentLogin(usernum, password);
-    			 if (returnnum == 0)
-    				 JOptionPane.showMessageDialog(null, "用户名不存在");
-    			 if (returnnum == 1)
-    				 JOptionPane.showMessageDialog(null, "密码错误请重新输入");
-    			 if (returnnum == 2) 
-    			 {
-    				 JOptionPane.showMessageDialog(null, "登陆成功");
-    				 LoginFrame.usernum=usernum;
-    				 StudentMainFrame studenframe=new StudentMainFrame();
-    				 FrameChange.setCenter(studenframe.frame);
-    				 studenframe.frame.setVisible(true);
-    				 Loginframe.dispose();
-    			 }
-    		 }
-    	}
-    	if(storeRadioButton.isSelected())
-    	{	
-    		 if (usernum.equals("")||password.equals(""))
-                 JOptionPane.showMessageDialog(null, "输入不能为空请重新输入！");
-    		 else {
-    			 //System.out.println(11);
-    			 returnnum=Login.storeLogin(usernum, password);
-    			 System.out.println(returnnum);
-    			 if (usernum.equals("")||password.equals(""))
-    				 JOptionPane.showMessageDialog(null, "输入不能为空请重新输入！");
-    			 if (returnnum == 0)
-    				 JOptionPane.showMessageDialog(null, "用户名不存在");
-    			 if (returnnum == 1)
-    				 JOptionPane.showMessageDialog(null, "密码错误请重新输入");
-    			 if (returnnum == 2) 
-    			 {
-    				 JOptionPane.showMessageDialog(null, "该用户未进行商店绑定");
-    			 }
-    			 if(returnnum == 3)
-    			 {	
-    				 int store_id=User_store.getStore_id(usernum);
-    				 LoginFrame.usernum=usernum;
-    				 LoginFrame.store_id=store_id;
-    				 BusinessMainFrame window =new BusinessMainFrame();
-    				 FrameChange.setCenter(window.businessframe);
-    				 window.businessframe.setVisible(true);
-    				 Loginframe.dispose();
-    			 }
-    		 }
-    	}
-    	if(teacherRadioButton.isSelected())
-    	{
-    		 if (usernum.equals("")||password.equals(""))
-                 JOptionPane.showMessageDialog(null, "输入不能为空请重新输入！");
-    		 else
-    		 {
-    			 returnnum=Login.teacherLogin(usernum, password);
-    			 if (returnnum == 0)
-    				 JOptionPane.showMessageDialog(null, "用户名不存在");
-    			 if (returnnum == 1)
-    				 JOptionPane.showMessageDialog(null, "密码错误请重新输入");
-    			 if (returnnum == 2) 
-    			 {
-    				 JOptionPane.showMessageDialog(null, "登陆成功");
-                     TeacherFrame teacherframe=new TeacherFrame();
-                     FrameChange.setCenter(teacherframe.teacherframe);
-    				 teacherframe.teacherframe.setVisible(true);
-    				 Loginframe.dispose();
-    			 }
-    		 }
-    	}
-    	if(managerRadioButton.isSelected())
-    	{ 
-    		if (usernum.equals("")||password.equals(""))
-    			JOptionPane.showMessageDialog(null, "输入不能为空请重新输入！");
-    		else
-    		{
-    			returnnum=Login.managerLogin(usernum, password);
-    			if (returnnum == 0)
-    				JOptionPane.showMessageDialog(null, "用户名不存在");
-    			if (returnnum == 1)
-    				JOptionPane.showMessageDialog(null, "密码错误请重新输入");
-    			if (returnnum == 2) 
-    			{
-    				JOptionPane.showMessageDialog(null, "登陆成功");
-    				ManageMainFrame manageframe=new  ManageMainFrame();
-    				FrameChange.setCenter(manageframe.frame);
-    				manageframe.frame.setVisible(true);
-    				Loginframe.dispose();
-    				
-    			}
-    		}
-    	}   	
+        if (studentRadioButton.isSelected()) {
+            if (usernum.equals("") || password.equals(""))
+                JOptionPane.showMessageDialog(null, "输入不能为空请重新输入！");
+            else {
+                returnnum = Login.studentLogin(usernum, password);
+                if (returnnum == 0)
+                    JOptionPane.showMessageDialog(null, "用户名不存在");
+                if (returnnum == 1)
+                    JOptionPane.showMessageDialog(null, "密码错误请重新输入");
+                if (returnnum == 2) {
+                    JOptionPane.showMessageDialog(null, "登陆成功");
+                    LoginFrame.usernum = usernum;
+                    StudentMainFrame studenframe = new StudentMainFrame();
+                    FrameChange.setCenter(studenframe.frame);
+                    studenframe.frame.setVisible(true);
+                    Loginframe.dispose();
+                }
+            }
+        }
+        if (storeRadioButton.isSelected()) {
+            if (usernum.equals("") || password.equals(""))
+                JOptionPane.showMessageDialog(null, "输入不能为空请重新输入！");
+            else {
+                //System.out.println(11);
+                returnnum = Login.storeLogin(usernum, password);
+                System.out.println(returnnum);
+                if (usernum.equals("") || password.equals(""))
+                    JOptionPane.showMessageDialog(null, "输入不能为空请重新输入！");
+                if (returnnum == 0)
+                    JOptionPane.showMessageDialog(null, "用户名不存在");
+                if (returnnum == 1)
+                    JOptionPane.showMessageDialog(null, "密码错误请重新输入");
+                if (returnnum == 2) {
+                    JOptionPane.showMessageDialog(null, "该用户未进行商店绑定");
+                }
+                if (returnnum == 3) {
+                    int store_id = User_store.getStore_id(usernum);
+                    LoginFrame.usernum = usernum;
+                    LoginFrame.store_id = store_id;
+                    BusinessMainFrame window = new BusinessMainFrame();
+                    FrameChange.setCenter(window.businessframe);
+                    window.businessframe.setVisible(true);
+                    Loginframe.dispose();
+                }
+            }
+        }
+        if (teacherRadioButton.isSelected()) {
+            if (usernum.equals("") || password.equals(""))
+                JOptionPane.showMessageDialog(null, "输入不能为空请重新输入！");
+            else {
+                returnnum = Login.teacherLogin(usernum, password);
+                if (returnnum == 0)
+                    JOptionPane.showMessageDialog(null, "用户名不存在");
+                if (returnnum == 1)
+                    JOptionPane.showMessageDialog(null, "密码错误请重新输入");
+                if (returnnum == 2) {
+                    JOptionPane.showMessageDialog(null, "登陆成功");
+                    TeacherFrame teacherframe = new TeacherFrame();
+                    FrameChange.setCenter(teacherframe.teacherframe);
+                    teacherframe.teacherframe.setVisible(true);
+                    Loginframe.dispose();
+                }
+            }
+        }
+        if (managerRadioButton.isSelected()) {
+            if (usernum.equals("") || password.equals(""))
+                JOptionPane.showMessageDialog(null, "输入不能为空请重新输入！");
+            else {
+                returnnum = Login.managerLogin(usernum, password);
+                if (returnnum == 0)
+                    JOptionPane.showMessageDialog(null, "用户名不存在");
+                if (returnnum == 1)
+                    JOptionPane.showMessageDialog(null, "密码错误请重新输入");
+                if (returnnum == 2) {
+                    JOptionPane.showMessageDialog(null, "登陆成功");
+                    ManageMainFrame manageframe = new ManageMainFrame();
+                    FrameChange.setCenter(manageframe.frame);
+                    manageframe.frame.setVisible(true);
+                    Loginframe.dispose();
+
+                }
+            }
+        }
     }
+
     /**
-          * 选择教师角色登陆
-     * */
+     * 选择教师角色登陆
+     */
     private void btn_teacherSelectActionPerformed(ActionEvent e) {
-    	 storeRadioButton.setSelected(false);
-    	 managerRadioButton.setSelected(false);
-         studentRadioButton.setSelected(false);
-         
+        storeRadioButton.setSelected(false);
+        managerRadioButton.setSelected(false);
+        studentRadioButton.setSelected(false);
+
     }
+
     /**
-          * 选择管理员角色登陆
-     * */
+     * 选择管理员角色登陆
+     */
     private void btn_managerSelectActionPerformed(ActionEvent e) {
-    	 storeRadioButton.setSelected(false);
-    	 teacherRadioButton.setSelected(false);
-         studentRadioButton.setSelected(false);
-         
+        storeRadioButton.setSelected(false);
+        teacherRadioButton.setSelected(false);
+        studentRadioButton.setSelected(false);
+
     }
+
     /**
-          * 选择学生角色登陆
-     * */
+     * 选择学生角色登陆
+     */
     private void btn_studentSelectActionPerformed(ActionEvent e) {
-    	storeRadioButton.setSelected(false);
-    	teacherRadioButton.setSelected(false);
-    	managerRadioButton.setSelected(false);
-    
-}
-    /**
-          * 选择商家角色登陆
-     * */
-    private void btn_storeSelectActionPerformed(ActionEvent e) {
-    	studentRadioButton.setSelected(false);
-    	teacherRadioButton.setSelected(false);
-    	managerRadioButton.setSelected(false);
+        storeRadioButton.setSelected(false);
+        teacherRadioButton.setSelected(false);
+        managerRadioButton.setSelected(false);
+
     }
+
+    /**
+     * 选择商家角色登陆
+     */
+    private void btn_storeSelectActionPerformed(ActionEvent e) {
+        studentRadioButton.setSelected(false);
+        teacherRadioButton.setSelected(false);
+        managerRadioButton.setSelected(false);
+    }
+
     /**
      * 修改密码
      */
@@ -334,16 +339,15 @@ public class LoginFrame {
             StoreModifyPasswordFrame window = new StoreModifyPasswordFrame();
             FrameChange.setCenter(window.frame);
             window.frame.setVisible(true);
-        }else if (managerRadioButton.isSelected()) {
-        	ManagerModifyPasswordFrame window = new ManagerModifyPasswordFrame();
+        } else if (managerRadioButton.isSelected()) {
+            ManagerModifyPasswordFrame window = new ManagerModifyPasswordFrame();
             FrameChange.setCenter(window.frame);
             window.frame.setVisible(true);
-        }else if (teacherRadioButton.isSelected()) {
-        	TeacherModifyPasswordFrame window = new TeacherModifyPasswordFrame();
+        } else if (teacherRadioButton.isSelected()) {
+            TeacherModifyPasswordFrame window = new TeacherModifyPasswordFrame();
             FrameChange.setCenter(window.frame);
             window.frame.setVisible(true);
-        }
-        else
+        } else
             JOptionPane.showMessageDialog(null, "请选择身份进行改密");
     }
 }

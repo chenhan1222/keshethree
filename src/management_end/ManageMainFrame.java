@@ -16,6 +16,7 @@ import java.util.List;
 //import javax.security.auth.Refreshable;
 
 public class ManageMainFrame {
+
     public JFrame frame;
     private JPanel store_bingdingpanel;
     private JPanel tuition_feepanel;
