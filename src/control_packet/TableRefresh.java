@@ -1,13 +1,13 @@
 package control_packet;
 
-import java.util.List;
-import java.util.Vector;
-import javax.swing.JTable;
+import data.*;
+import tabletools.*;
+
+import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
-
-import tabletools.*;
-import data.*;
+import java.util.List;
+import java.util.Vector;
 
 public class TableRefresh {
     /**
@@ -151,16 +151,32 @@ public class TableRefresh {
         TableColumnModel tcm = table.getColumnModel();
         tcm.getColumn(ifselectcolumn).setCellEditor(table.getDefaultEditor(Boolean.class));
         tcm.getColumn(ifselectcolumn).setCellRenderer(table.getDefaultRenderer(Boolean.class));
-        //tcm.getColumn(5).setPreferredWidth(80);
-        tcm.getColumn(ifselectcolumn).setWidth(60);
-        tcm.getColumn(ifselectcolumn).setMaxWidth(60);
+
+        tcm.getColumn(ifselectcolumn).setMaxWidth(100);
+        tcm.getColumn(ifselectcolumn).setMinWidth(100);
+
+        int idcolumn = dtm.findColumn("编号");
+        tcm.getColumn(idcolumn).setMaxWidth(100);
+        tcm.getColumn(idcolumn).setMinWidth(100);
+
+        int typecolumn = dtm.findColumn("种类");
+        tcm.getColumn(typecolumn).setMaxWidth(120);
+        tcm.getColumn(typecolumn).setMinWidth(120);
+
+        int pricecolumn = dtm.findColumn("价格");
+        tcm.getColumn(pricecolumn).setMaxWidth(120);
+        tcm.getColumn(pricecolumn).setMinWidth(120);
+
         int imagecolumn = dtm.findColumn("图片");
         //table.getColumnModel().getColumn(imagecolumn).setCellRenderer(new Mytablerencender());//渲染图片
         tcm.getColumn(imagecolumn).setCellRenderer(new MyGoodsTableImageRencender());
-        tcm.getColumn(imagecolumn).setMinWidth(100);
-        tcm.getColumn(imagecolumn).setWidth(100);
-        tcm.getColumn(imagecolumn).setMaxWidth(100);
+        tcm.getColumn(imagecolumn).setMinWidth(120);
+        tcm.getColumn(imagecolumn).setWidth(120);
+        tcm.getColumn(imagecolumn).setMaxWidth(120);
         table.setRowHeight(100);//设置每行高度为100
+        int salenumcolumn = dtm.findColumn("销售量");
+        tcm.getColumn(salenumcolumn ).setMaxWidth(120);
+        tcm.getColumn(salenumcolumn ).setMinWidth(120);
     }
 
     /**
@@ -326,8 +342,10 @@ public class TableRefresh {
         tcm.getColumn(ifselectcolumn).setCellRenderer(table.getDefaultRenderer(Boolean.class));
         tcm.getColumn(ifselectcolumn).setPreferredWidth(80);
         tcm.getColumn(ifselectcolumn).setWidth(80);
-        tcm.getColumn(ifselectcolumn).setMaxWidth(50);
-        tcm.getColumn(buytimecolumn).setMaxWidth(55);
+        tcm.getColumn(ifselectcolumn).setMaxWidth(70);
+        tcm.getColumn(ifselectcolumn).setMinWidth(70);
+        tcm.getColumn(buytimecolumn).setMaxWidth(70);
+        tcm.getColumn(buytimecolumn).setMinWidth(70);
         tcm.getColumn(orderstatuscolumn).setMaxWidth(80);
     }
 

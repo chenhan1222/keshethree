@@ -25,7 +25,7 @@ public class StoreorderFrame {
         store_id = LoginFrame.store_id;
         frame = new JFrame();
         //frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setBounds(100, 100, 939, 557);
+        frame.setBounds(100, 100, 1164, 557);
         frame.setTitle("\u6211\u7684\u8BA2\u5355");
         frame.getContentPane().setFont(new Font("宋体", Font.BOLD, 16));
         frame.getContentPane().setLayout(null);
@@ -33,7 +33,7 @@ public class StoreorderFrame {
         table = new JTable();
         //DefaultTableModel dtm = (DefaultTableModel) table.getModel();
         JScrollPane scrollPane = new JScrollPane(table);
-        scrollPane.setSize(743, 451);
+        scrollPane.setSize(975, 451);
         scrollPane.setLocation(10, 32);
         frame.getContentPane().add(scrollPane);
         List<Userorder> userorders = Userorder.getStoreOrder(store_id);
@@ -46,7 +46,7 @@ public class StoreorderFrame {
             }
         });
         btnNewButton_7.setFont(new Font("宋体", Font.BOLD, 16));
-        btnNewButton_7.setBounds(763, 78, 111, 30);
+        btnNewButton_7.setBounds(1007, 74, 111, 30);
         frame.getContentPane().add(btnNewButton_7);
 
         JButton btnNewButton_8 = new JButton("接单");//接单按钮
@@ -56,7 +56,7 @@ public class StoreorderFrame {
                 btn_acceptOrderActionPerformed(e);
             }
         });
-        btnNewButton_8.setBounds(763, 152, 111, 30);
+        btnNewButton_8.setBounds(1007, 159, 111, 30);
         frame.getContentPane().add(btnNewButton_8);
 
         JButton btnNewButton_9 = new JButton("开始配送");
@@ -66,7 +66,7 @@ public class StoreorderFrame {
             }
         });
         btnNewButton_9.setFont(new Font("宋体", Font.BOLD, 16));
-        btnNewButton_9.setBounds(763, 220, 111, 30);
+        btnNewButton_9.setBounds(1007, 226, 111, 30);
         frame.getContentPane().add(btnNewButton_9);
 
         JButton btnNewButton_10 = new JButton("送达");
@@ -76,7 +76,7 @@ public class StoreorderFrame {
             }
         });
         btnNewButton_10.setFont(new Font("宋体", Font.BOLD, 16));
-        btnNewButton_10.setBounds(762, 288, 112, 30);
+        btnNewButton_10.setBounds(1007, 305, 112, 30);
         frame.getContentPane().add(btnNewButton_10);
 
         JButton btnNewButton = new JButton("退款");//退款
@@ -86,7 +86,7 @@ public class StoreorderFrame {
             }
         });
         btnNewButton.setFont(new Font("宋体", Font.BOLD, 16));
-        btnNewButton.setBounds(764, 358, 110, 30);
+        btnNewButton.setBounds(1008, 389, 110, 30);
         frame.getContentPane().add(btnNewButton);
 
         JMenuBar menuBar = new JMenuBar();
@@ -119,11 +119,11 @@ public class StoreorderFrame {
         mntmNewMenuItem_6.setFont(new Font("宋体", Font.BOLD, 14));
         mnNewMenu.add(mntmNewMenuItem_6);
 
-        JMenuItem mntmNewMenuItem_4 = new JMenuItem("未接单         ", 'Y');
+        JMenuItem mntmNewMenuItem_4 = new JMenuItem("等待用户支付         ", 'Y');
         mntmNewMenuItem_4.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Y, ActionEvent.CTRL_MASK));
         mntmNewMenuItem_4.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                String orderstatus = "等待商家接单";
+                String orderstatus = "等待用户支付";
                 List<Userorder> userorders = Userorder.getStoreOrder(store_id, "orderstatus", orderstatus);
                 TableRefresh.refreshStore_UserorderTable(userorders, table);
             }
@@ -131,11 +131,11 @@ public class StoreorderFrame {
         mntmNewMenuItem_4.setFont(new Font("宋体", Font.BOLD, 14));
         mnNewMenu.add(mntmNewMenuItem_4);
 
-        JMenuItem mntmNewMenuItem_1 = new JMenuItem("已接单         ");
+        JMenuItem mntmNewMenuItem_1 = new JMenuItem("用户已付款         ");
         mntmNewMenuItem_1.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_T, ActionEvent.CTRL_MASK));//快捷键
         mntmNewMenuItem_1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                String orderstatus = "商家已接单";
+                String orderstatus = "用户已付款";
                 List<Userorder> userorders = Userorder.getStoreOrder(store_id, "orderstatus", orderstatus);
                 TableRefresh.refreshStore_UserorderTable(userorders, table);
             }

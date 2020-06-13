@@ -176,7 +176,7 @@ public class ManageMainFrame {
         JMenuItem mntmNewMenuItem = new JMenuItem("学生信息管理");
         mntmNewMenuItem.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                studentpanel.setBounds(0, 40, 860, 626);
+                studentpanel.setBounds(20, 40, 860, 626);
                 frame.setContentPane(studentpanel);
             }
         });
@@ -186,7 +186,7 @@ public class ManageMainFrame {
         JMenuItem mntmNewMenuItem_1 = new JMenuItem("教师信息管理");
         mntmNewMenuItem_1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                teacherpanel.setBounds(0, 40, 860, 626);
+                teacherpanel.setBounds(10, 40, 860, 626);
                 frame.setContentPane(teacherpanel);
             }
         });
@@ -196,7 +196,7 @@ public class ManageMainFrame {
         JMenuItem mntmNewMenuItem_2 = new JMenuItem("工作人员信息管理");
         mntmNewMenuItem_2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                staffpanel.setBounds(0, 45, 860, 626);
+                staffpanel.setBounds(15, 45, 860, 626);
                 frame.setContentPane(staffpanel);
             }
         });
@@ -210,7 +210,7 @@ public class ManageMainFrame {
         JMenuItem mntmNewMenuItem_3 = new JMenuItem("学费管理");
         mntmNewMenuItem_3.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                tuition_feepanel.setBounds(5, 32, 860, 626);
+                tuition_feepanel.setBounds(25, 22, 860, 626);
                 frame.setContentPane(tuition_feepanel);
             }
         });
@@ -224,7 +224,7 @@ public class ManageMainFrame {
         JMenuItem mntmNewMenuItem_4 = new JMenuItem("商店绑定");
         mntmNewMenuItem_4.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                store_bingdingpanel.setBounds(0, 50, 860, 626);
+                store_bingdingpanel.setBounds(30, 30, 860, 626);
                 frame.setContentPane(store_bingdingpanel);
             }
         });
@@ -235,7 +235,7 @@ public class ManageMainFrame {
 
         lblNewLabel = new JLabel("\u5B66\u53F7\uFF1A");
         lblNewLabel.setFont(new Font("宋体", Font.BOLD, 12));
-        lblNewLabel.setBounds(23, 25, 36, 20);
+        lblNewLabel.setBounds(23, 25, 43, 20);
         studentpanel.add(lblNewLabel);
 
         textField = new JTextField();
@@ -246,7 +246,7 @@ public class ManageMainFrame {
 
         lblNewLabel_1 = new JLabel("\u5BC6\u7801\uFF1A");
         lblNewLabel_1.setFont(new Font("宋体", Font.BOLD, 12));
-        lblNewLabel_1.setBounds(23, 65, 36, 20);
+        lblNewLabel_1.setBounds(23, 65, 43, 20);
         studentpanel.add(lblNewLabel_1);
 
         textField_1 = new JTextField();
@@ -257,7 +257,7 @@ public class ManageMainFrame {
 
         lblNewLabel_2 = new JLabel("\u59D3\u540D\uFF1A");
         lblNewLabel_2.setFont(new Font("宋体", Font.BOLD, 12));
-        lblNewLabel_2.setBounds(23, 105, 36, 20);
+        lblNewLabel_2.setBounds(23, 105, 43, 20);
         studentpanel.add(lblNewLabel_2);
 
         textField_2 = new JTextField();
@@ -290,7 +290,7 @@ public class ManageMainFrame {
 
         lblNewLabel_6 = new JLabel("\u516C\u5BD3\u53F7\uFF1A");
         lblNewLabel_6.setFont(new Font("宋体", Font.BOLD, 12));
-        lblNewLabel_6.setBounds(23, 265, 48, 21);
+        lblNewLabel_6.setBounds(23, 265, 54, 21);
         studentpanel.add(lblNewLabel_6);
 
         textField_5 = new JTextField();
@@ -301,7 +301,7 @@ public class ManageMainFrame {
 
         lblNewLabel_5 = new JLabel("\u5BBF\u820D\u53F7\uFF1A");
         lblNewLabel_5.setFont(new Font("宋体", Font.BOLD, 12));
-        lblNewLabel_5.setBounds(23, 225, 48, 15);
+        lblNewLabel_5.setBounds(23, 225, 54, 15);
         studentpanel.add(lblNewLabel_5);
 
         textField_6 = new JTextField();
@@ -349,7 +349,7 @@ public class ManageMainFrame {
             }
         });
         btnNewButton_2.setFont(new Font("宋体", Font.BOLD, 12));
-        btnNewButton_2.setBounds(401, 514, 93, 30);
+        btnNewButton_2.setBounds(401, 480, 93, 30);
         studentpanel.add(btnNewButton_2);
 
         btnNewButton_3 = new JButton("删除");
@@ -359,11 +359,11 @@ public class ManageMainFrame {
             }
         });
         btnNewButton_3.setFont(new Font("宋体", Font.BOLD, 12));
-        btnNewButton_3.setBounds(538, 514, 93, 30);
+        btnNewButton_3.setBounds(538, 480, 93, 30);
         studentpanel.add(btnNewButton_3);
 
         scrollPane = new JScrollPane();
-        scrollPane.setBounds(219, 55, 624, 438);
+        scrollPane.setBounds(219, 55, 624, 402);
         studentpanel.add(scrollPane);
 
         s_table = new JTable(new MyStudentTableModel());
@@ -703,7 +703,7 @@ public class ManageMainFrame {
             }
         });
         btnNewButton_18.setFont(new Font("宋体", Font.BOLD, 12));
-        btnNewButton_18.setBounds(504, 513, 93, 30);
+        btnNewButton_18.setBounds(504, 500, 93, 30);
         store_bingdingpanel.add(btnNewButton_18);
 
         btnNewButton_19 = new JButton("修改绑定");
@@ -713,7 +713,7 @@ public class ManageMainFrame {
             }
         });
         btnNewButton_19.setFont(new Font("宋体", Font.BOLD, 12));
-        btnNewButton_19.setBounds(273, 513, 93, 30);
+        btnNewButton_19.setBounds(273, 500, 93, 30);
         store_bingdingpanel.add(btnNewButton_19);
 
 

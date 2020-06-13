@@ -33,7 +33,7 @@ public class BusinessMainFrame {
     private JTextField textField_1;
     private JTextField textField_2;
     private JComboBox<String> comboBox ;
-   
+
     private JLabel lblNewLabel_5;
     private JLabel lblNewLabel_6;
     private String DEFAULT_TIME_FORMAT = "yyyy-MM-dd hh:mm:ss";//日期格式
@@ -68,8 +68,8 @@ public class BusinessMainFrame {
      * Initialize the contents of the frame.
      */
     private void initialize() {
-    	store_id= LoginFrame.store_id;
-    	businessframe = new JFrame();
+        store_id= LoginFrame.store_id;
+        businessframe = new JFrame();
         businessframe.setBounds(100, 100, 1073, 763);
         businessframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         businessframe.setLocationRelativeTo(null);
@@ -84,11 +84,11 @@ public class BusinessMainFrame {
         DefaultTableCellRenderer r = new DefaultTableCellRenderer();
         r.setHorizontalAlignment(JLabel.CENTER);
         table.setDefaultRenderer(Object.class, r);
-        
+
         JScrollPane scrollPane = new JScrollPane(table);
         scrollPane.setSize(1023, 512);
         scrollPane.setLocation(10, 174);
-        
+
         businessframe.getContentPane().add(scrollPane, BorderLayout.CENTER);
         List<Goods> goodslist = Goods.getgoods(store_id);
         TableRefresh.refreshStore_GoodsTable(goodslist, table);
@@ -97,7 +97,7 @@ public class BusinessMainFrame {
         btnNewButton.setIcon(new ImageIcon("src/images/浏览.png"));
         btnNewButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {    //全部商品
-            	btn_getAllGoodsActionPerformed(e);
+                btn_getAllGoodsActionPerformed(e);
             }
         });
         btnNewButton.setFont(new Font("宋体", Font.BOLD, 16));
@@ -115,7 +115,7 @@ public class BusinessMainFrame {
         btnNewButton_1.setIcon(new ImageIcon("src/images/搜索.png"));
         btnNewButton_1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {        //搜索功能
-            	btn_selectGoodsActionPerformed(e) ;
+                btn_selectGoodsActionPerformed(e) ;
             }
         });
         btnNewButton_1.setFont(new Font("宋体", Font.BOLD, 16));
@@ -126,7 +126,7 @@ public class BusinessMainFrame {
         btnNewButton_2.setIcon(new ImageIcon("src/images/修改.png"));
         btnNewButton_2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {//修改商品属性，商品号不可修改
-            	btn_modifyGoodsActionPerformed(e);
+                btn_modifyGoodsActionPerformed(e);
             }
         });
         btnNewButton_2.setFont(new Font("宋体", Font.BOLD, 16));
@@ -137,7 +137,7 @@ public class BusinessMainFrame {
         btnNewButton_4.setIcon(new ImageIcon("src/images/修改.png"));
         btnNewButton_4.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-            	btn_modifyStoreActionPerformed(e);
+                btn_modifyStoreActionPerformed(e);
             }
         });
         btnNewButton_4.setFont(new Font("宋体", Font.BOLD, 16));
@@ -148,7 +148,7 @@ public class BusinessMainFrame {
         btnNewButton_5.setIcon(new ImageIcon("src/images/钱.png"));
         btnNewButton_5.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-            	btn_todaySaleActionPerformed(e);
+                btn_todaySaleActionPerformed(e);
             }
         });
         btnNewButton_5.setFont(new Font("宋体", Font.BOLD, 16));
@@ -159,7 +159,7 @@ public class BusinessMainFrame {
         btnNewButton_6.setIcon(new ImageIcon("src/images/订单管理.png"));
         btnNewButton_6.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-            	btn_orderManageActionPerformed(e);
+                btn_orderManageActionPerformed(e);
             }
         });
         btnNewButton_6.setFont(new Font("宋体", Font.BOLD, 16));
@@ -183,10 +183,10 @@ public class BusinessMainFrame {
         lblNewLabel_3.setFont(new Font("宋体", Font.BOLD, 25));
         lblNewLabel_3.setBounds(740, 91, 142, 36);
         businessframe.getContentPane().add(lblNewLabel_3);
-        
-        java.text.DecimalFormat   df=new   java.text.DecimalFormat("#.##");   
+
+        java.text.DecimalFormat   df=new   java.text.DecimalFormat("#.##");
         JLabel lblNewLabel_4 = new JLabel(String.valueOf(df.format(Store.getGrade(store_id))));
-       //JLabel lblNewLabel_4 = new JLabel("5");
+        //JLabel lblNewLabel_4 = new JLabel("5");
         lblNewLabel_4.setForeground(new Color(255, 51, 0));
         lblNewLabel_4.setBackground(Color.WHITE);
         lblNewLabel_4.setFont(new Font("宋体", Font.BOLD, 60));
@@ -198,25 +198,25 @@ public class BusinessMainFrame {
         lblNewLabel_5.setFont(new Font("宋体", Font.BOLD, 20));
         lblNewLabel_5.setBounds(708, 6, 309, 30);
         businessframe.getContentPane().add(lblNewLabel_5);
-        
+
         JLabel lblNewLabel_7 = new JLabel("上传图片预览");//上传图片预览
         lblNewLabel_7.setFont(new Font("宋体", Font.BOLD, 16));
         lblNewLabel_7.setBounds(570, 10, 114, 25);
         businessframe.getContentPane().add(lblNewLabel_7);
-        
+
         JButton btnNewButton_3 = new JButton("删除商品");//删除商品
         btnNewButton_3.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        		 btn_deleteGoodsActionPerformed( e);
-        	}
+            public void actionPerformed(ActionEvent e) {
+                btn_deleteGoodsActionPerformed( e);
+            }
         });
         btnNewButton_3.setFont(new Font("宋体", Font.BOLD, 16));
         btnNewButton_3.setBounds(330, 112, 127, 25);
         businessframe.getContentPane().add(btnNewButton_3);
-        
+
         lblNewLabel_6 = new JLabel("");
         lblNewLabel_6.setBounds(580, 45, 100, 100);
-        businessframe.getContentPane().add(lblNewLabel_6); 
+        businessframe.getContentPane().add(lblNewLabel_6);
 
         JMenuBar menuBar = new JMenuBar();
         businessframe.setJMenuBar(menuBar);
@@ -228,13 +228,14 @@ public class BusinessMainFrame {
         textField_1 = new JTextField();
         menuBar.add(textField_1);
         textField_1.setFont(new Font("宋体", Font.BOLD, 14));
-        textField_1.setColumns(10);
+        textField_1.setColumns(30);
 
         JLabel lblNewLabel_1 = new JLabel("请选择品类：");
         menuBar.add(lblNewLabel_1);
         lblNewLabel_1.setFont(new Font("宋体", Font.BOLD, 14));
 
         comboBox = new JComboBox<String>();
+        comboBox.setMaximumRowCount(15);
         menuBar.add(comboBox);
         comboBox.setFont(new Font("宋体", Font.BOLD, 14));
         comboBox.setEditable(true);
@@ -247,25 +248,25 @@ public class BusinessMainFrame {
         textField_2 = new JTextField();
         menuBar.add(textField_2);
         textField_2.setFont(new Font("宋体", Font.BOLD, 14));
-        textField_2.setColumns(10);
-        
+        textField_2.setColumns(30);
+
         JMenuItem mntmNewMenuItem_1 = new JMenuItem("上传图片");//上传图片
         mntmNewMenuItem_1.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        		 btn_addImgActionPerformed(e);
-        	}
+            public void actionPerformed(ActionEvent e) {
+                btn_addImgActionPerformed(e);
+            }
         });
         mntmNewMenuItem_1.setFont(new Font("宋体", Font.BOLD, 14));
         menuBar.add(mntmNewMenuItem_1);
         //添加商品按钮
-                JMenuItem mntmNewMenuItem = new JMenuItem("           添加商品                               ");
-                mntmNewMenuItem.addActionListener(new ActionListener() {
-                    public void actionPerformed(ActionEvent e) {
-                    	btn_addGoodsActionPerformed(e);
-                    }
-                });
-                mntmNewMenuItem.setFont(new Font("宋体", Font.BOLD, 14));
-                menuBar.add(mntmNewMenuItem);
+        JMenuItem mntmNewMenuItem = new JMenuItem(" \u6DFB\u52A0\u5546\u54C1         ");
+        mntmNewMenuItem.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                btn_addGoodsActionPerformed(e);
+            }
+        });
+        mntmNewMenuItem.setFont(new Font("宋体", Font.BOLD, 14));
+        menuBar.add(mntmNewMenuItem);
         Timer tmr = new Timer();
         tmr.scheduleAtFixedRate(new JLabelTimerTask(), new Date(), ONE_SECOND);
     }
@@ -274,22 +275,22 @@ public class BusinessMainFrame {
      * 获取全部商品
      * */
     private void btn_getAllGoodsActionPerformed(ActionEvent e) {
-    	List<Goods> goodslist = Goods.getgoods(store_id);
+        List<Goods> goodslist = Goods.getgoods(store_id);
         TableRefresh.refreshStore_GoodsTable(goodslist, table);
     }
     /**
      * 搜索商品
      * */
     private void btn_selectGoodsActionPerformed(ActionEvent e) {
-    	 String Str = textField.getText();
-         List<Goods> goodslist = Goods.getgoods(store_id, Str, Str);
-         TableRefresh.refreshStore_GoodsTable(goodslist, table);
+        String Str = textField.getText();
+        List<Goods> goodslist = Goods.getgoods(store_id, Str, Str);
+        TableRefresh.refreshStore_GoodsTable(goodslist, table);
     }
     /**
      * 添加商品
      * */
     private void btn_addGoodsActionPerformed(ActionEvent e) {
-    	try {
+        try {
             String name = textField_1.getText();
             String type = comboBox.getSelectedItem().toString();
             double price = Double.valueOf(textField_2.getText());
@@ -303,14 +304,14 @@ public class BusinessMainFrame {
             }
             ImageIO.write(ImageDemo.toBufferedImage(image), "jpg", outputfile);
             FileInputStream in = ImageUtil.readImage("D:\\java图标store.jpg");
-         
+
             if (name.length() == 0 || type.length() == 0 ||textField_2.getText().length()==0)
                 JOptionPane.showMessageDialog(null, "输入不能为空！");
             else {
-            	Store.addGoods(store_id, name, type, price,in);
-            	JOptionPane.showMessageDialog(null, "添加成功！", "提示", JOptionPane.PLAIN_MESSAGE);
-            	List<Goods> goodslist = Goods.getgoods(store_id);
-            	TableRefresh.refreshStore_GoodsTable(goodslist, table);
+                Store.addGoods(store_id, name, type, price,in);
+                JOptionPane.showMessageDialog(null, "添加成功！", "提示", JOptionPane.PLAIN_MESSAGE);
+                List<Goods> goodslist = Goods.getgoods(store_id);
+                TableRefresh.refreshStore_GoodsTable(goodslist, table);
             }
         } catch (Exception e2) {
             JOptionPane.showMessageDialog(null, "添加失败,输入格式错误！", "提示", JOptionPane.PLAIN_MESSAGE);
@@ -323,24 +324,24 @@ public class BusinessMainFrame {
      * 删除商品
      * */
     private void btn_deleteGoodsActionPerformed(ActionEvent e) {
-    	MyGoodsTableImageModel dtm=(MyGoodsTableImageModel)table.getModel();	
+        MyGoodsTableImageModel dtm=(MyGoodsTableImageModel)table.getModel();
         int ifselectcolumn = dtm.findColumn("是否选中");//获得对应列号
         int goods_idcolumn=dtm.findColumn("编号");//获得对应列号
-    	for (int i = 0; i < table.getRowCount(); i++) {
-            int goods_id = Integer.valueOf(table.getValueAt(i, goods_idcolumn).toString());       
+        for (int i = 0; i < table.getRowCount(); i++) {
+            int goods_id = Integer.valueOf(table.getValueAt(i, goods_idcolumn).toString());
             String value = table.getValueAt(i, ifselectcolumn).toString();//读取你获取行号的某一列的值（也就是字段）
             if (value == "true") {
-                Store.DeleteyGoods(store_id, goods_id);               
+                Store.DeleteyGoods(store_id, goods_id);
             }
-        }	
-    		List<Goods> goodslist = Goods.getgoods(store_id);
-    		TableRefresh.refreshStore_GoodsTable(goodslist, table);
+        }
+        List<Goods> goodslist = Goods.getgoods(store_id);
+        TableRefresh.refreshStore_GoodsTable(goodslist, table);
     }
     /**
      * 修改商品信息
      * */
     private void btn_modifyGoodsActionPerformed(ActionEvent e) {
-    	MyGoodsTableImageModel dtm=(MyGoodsTableImageModel)table.getModel();	
+        MyGoodsTableImageModel dtm=(MyGoodsTableImageModel)table.getModel();
         int ifselectcolumn = dtm.findColumn("是否选中");//获得对应列号
         int goods_idcolumn=dtm.findColumn("编号");//获得对应列号
         int goods_namecolumn=dtm.findColumn("名称");//获得对应列号
@@ -369,38 +370,38 @@ public class BusinessMainFrame {
      * 今日销售
      * */
     private void btn_todaySaleActionPerformed(ActionEvent e) {
-    	 String Lable1 = "今日订单数(单)：";
-         String Lable2 = "今日已完成订单数(单)：";
-         String Lable3 = "今日收入(元)：";
-         int dayordersalenum = Userorder.getDayAllOrderSaleNum(store_id);
-         int dayfinishordersalenum = Userorder.getDayFinishOrderSaleNum(store_id);
-         double dayincome = Userorder.getDayIncome(store_id);
-         String Lable4 = Lable1 + String.valueOf(dayordersalenum) + "\n";
-         String Lable5 = Lable2 + String.valueOf(dayfinishordersalenum) + "\n";
-         String Lable6 = Lable3 + String.valueOf(dayincome);
-         UIManager.put("OptionPane.messageFont", new FontUIResource(new Font("宋体", Font.BOLD, 16)));//设置字体
-         JOptionPane.showMessageDialog(null, Lable4 + Lable5 + Lable6, "今日营业情况：", JOptionPane.PLAIN_MESSAGE);
+        String Lable1 = "今日订单数(单)：";
+        String Lable2 = "今日已完成订单数(单)：";
+        String Lable3 = "今日收入(元)：";
+        int dayordersalenum = Userorder.getDayAllOrderSaleNum(store_id);
+        int dayfinishordersalenum = Userorder.getDayFinishOrderSaleNum(store_id);
+        double dayincome = Userorder.getDayIncome(store_id);
+        String Lable4 = Lable1 + String.valueOf(dayordersalenum) + "\n";
+        String Lable5 = Lable2 + String.valueOf(dayfinishordersalenum) + "\n";
+        String Lable6 = Lable3 + String.valueOf(dayincome);
+        UIManager.put("OptionPane.messageFont", new FontUIResource(new Font("宋体", Font.BOLD, 16)));//设置字体
+        JOptionPane.showMessageDialog(null, Lable4 + Lable5 + Lable6, "今日营业情况：", JOptionPane.PLAIN_MESSAGE);
     }
     /**
      * 修改商店信息
      * */
     private void btn_modifyStoreActionPerformed(ActionEvent e) {
-    	ModifyStoreFrame window=new ModifyStoreFrame();
-    	FrameChange.setCenter(window.frame);
-    	window.frame.setVisible(true);
-    	
+        ModifyStoreFrame window=new ModifyStoreFrame();
+        FrameChange.setCenter(window.frame);
+        window.frame.setVisible(true);
+
     }
     /**
      * 订单管理模块
      * */
     private void btn_orderManageActionPerformed(ActionEvent e) {
-    	StoreorderFrame window = new StoreorderFrame();
+        StoreorderFrame window = new StoreorderFrame();
         window.frame.setVisible(true);
-        FrameChange.setCenter(window.frame);  	
+        FrameChange.setCenter(window.frame);
     }
-   /**
-    * 本地上传图片
-    * */
+    /**
+     * 本地上传图片
+     * */
     private void btn_addImgActionPerformed(ActionEvent e) {
 
         JFileChooser fileChooser = new JFileChooser();
