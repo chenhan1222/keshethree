@@ -81,6 +81,28 @@ public class TeacherFrame {
      */
 
 
+    final static DatePicker getDatePicker() {
+        DatePicker datepick;
+        String DefaultFormat = "yyyy-MM-dd HH:mm:ss";
+        Date date = new Date();
+        Font font = new Font("Times New Roman", Font.BOLD, 14);
+        Dimension dimension = new Dimension(177, 24);
+        int[] hilightDays = {1, 3, 5, 7};
+        int[] disableDays = {4, 6, 5, 9};
+        datepick = new DatePicker(date, DefaultFormat, font, dimension);
+        datepick.setLocation(104, 74);
+        datepick.setBounds(130, 74, 138, 21);
+        //设置一个月份中需要高亮显示的日子
+        datepick.setHightlightdays(hilightDays, Color.red);
+        //设置一个月份中不需要的日子，呈灰色显示
+        datepick.setDisableddays(disableDays);
+        //设置国家
+        datepick.setLocale(Locale.CHINA);
+        //设置时钟面板可见
+        datepick.setTimePanleVisible(true);
+        return datepick;
+    }
+
     /*******************************************教师端界面布局*************************************************/
 
     private void initialize() {
@@ -143,49 +165,49 @@ public class TeacherFrame {
 
         textField001 = new JTextField();
         textField001.setFont(new Font("宋体", Font.BOLD, 14));
-        textField001.setBounds(104, 10, 138, 21);
+        textField001.setBounds(130, 10, 138, 21);
         teacherframe.getContentPane().add(textField001);
         textField001.setColumns(10);
 
         lblNewLabel_2 = new JLabel("请输入您的姓名：");
-        lblNewLabel_2.setBounds(10, 14, 101, 15);
+        lblNewLabel_2.setBounds(10, 11, 120, 20);
         teacherframe.getContentPane().add(lblNewLabel_2);
 
         textField = new JTextField();
         textField.setFont(new Font("宋体", Font.BOLD, 14));
         textField.setColumns(10);
-        textField.setBounds(104, 40, 138, 21);
+        textField.setBounds(130, 40, 138, 21);
         teacherframe.getContentPane().add(textField);
 
         lblNewLabel_3 = new JLabel("请输入您的工号");//请输入您的工号
-        lblNewLabel_3.setBounds(10, 46, 101, 15);
+        lblNewLabel_3.setBounds(10, 41, 120, 20);
         teacherframe.getContentPane().add(lblNewLabel_3);
 
         lblNewLabel_4 = new JLabel("请输入答疑时间：");
-        lblNewLabel_4.setBounds(10, 77, 101, 15);
+        lblNewLabel_4.setBounds(10, 77, 120, 20);
         teacherframe.getContentPane().add(lblNewLabel_4);
 
         datepick = getDatePicker();
         teacherframe.getContentPane().add(datepick);
 
         lblNewLabel_5 = new JLabel("请输入答疑地点：");//请输入答疑地点：
-        lblNewLabel_5.setBounds(10, 104, 101, 15);
+        lblNewLabel_5.setBounds(10, 104, 120, 20);
         teacherframe.getContentPane().add(lblNewLabel_5);
 
         textField_1 = new JTextField();
         textField_1.setFont(new Font("宋体", Font.BOLD, 14));
         textField_1.setColumns(10);
-        textField_1.setBounds(104, 100, 138, 21);
+        textField_1.setBounds(130, 100, 138, 21);
         teacherframe.getContentPane().add(textField_1);
 
         lblNewLabel_6 = new JLabel("请输入日程状态：");//请输入日程状态：
-        lblNewLabel_6.setBounds(10, 130, 101, 15);
+        lblNewLabel_6.setBounds(10, 130, 120, 20);
         teacherframe.getContentPane().add(lblNewLabel_6);
 
         textField_2 = new JTextField();
         textField_2.setFont(new Font("宋体", Font.BOLD, 14));
         textField_2.setColumns(10);
-        textField_2.setBounds(104, 126, 138, 21);
+        textField_2.setBounds(130, 126, 138, 21);
         teacherframe.getContentPane().add(textField_2);
 
         lblNewLabel_7 = new JLabel("当前时间:");//当前时间：
@@ -286,28 +308,6 @@ public class TeacherFrame {
                 btn_modifyTeacherActionPerformed(e);
             }
         });
-    }
-
-    final static DatePicker getDatePicker() {
-        DatePicker datepick;
-        String DefaultFormat = "yyyy-MM-dd HH:mm:ss";
-        Date date = new Date();
-        Font font = new Font("Times New Roman", Font.BOLD, 14);
-        Dimension dimension = new Dimension(177, 24);
-        int[] hilightDays = {1, 3, 5, 7};
-        int[] disableDays = {4, 6, 5, 9};
-        datepick = new DatePicker(date, DefaultFormat, font, dimension);
-        datepick.setLocation(104, 74);
-        datepick.setBounds(104, 74, 138, 21);
-        //设置一个月份中需要高亮显示的日子
-        datepick.setHightlightdays(hilightDays, Color.red);
-        //设置一个月份中不需要的日子，呈灰色显示
-        datepick.setDisableddays(disableDays);
-        //设置国家
-        datepick.setLocale(Locale.CHINA);
-        //设置时钟面板可见
-        datepick.setTimePanleVisible(true);
-        return datepick;
     }
 
     protected class JLabelTimerTask extends TimerTask {

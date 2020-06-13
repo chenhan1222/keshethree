@@ -1,7 +1,10 @@
 package student_end;
+
+import control_packet.FrameChange;
+import data.Evaluate;
+import data.Userorder;
+
 import javax.swing.*;
-import data.*;
-import control_packet.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -15,7 +18,7 @@ public class CommentFrame {
     private JTextArea textArea999;
     private String ordernum;
     public CommentFrame(String ordernum1) {
-    	ordernum=ordernum1;
+        ordernum=ordernum1;
         evaluateframe = new JFrame();
         evaluateframe.setTitle("评价界面");
         evaluateframe.setBounds(100, 100, 557, 371);
@@ -23,7 +26,7 @@ public class CommentFrame {
         FrameChange.setCenter(evaluateframe);//窗体居中显示
 
         JLabel lblNewLabel999 = new JLabel("您对商家/菜品满意吗？");
-        lblNewLabel999.setBounds(21, 26, 194, 22);
+        lblNewLabel999.setBounds(21, 26, 238, 22);
         lblNewLabel999.setFont(new Font("宋体", Font.BOLD, 18));
         evaluateframe.getContentPane().add(lblNewLabel999);
 
@@ -36,7 +39,7 @@ public class CommentFrame {
                 rdbtnNewRadioButton_4.setSelected(false);
             }
         });
-        rdbtnNewRadioButton.setBounds(23, 55, 56, 23);
+        rdbtnNewRadioButton.setBounds(23, 55, 71, 23);
         rdbtnNewRadioButton.setFont(new Font("宋体", Font.BOLD, 16));
         evaluateframe.getContentPane().add(rdbtnNewRadioButton);
 
@@ -49,7 +52,7 @@ public class CommentFrame {
                 rdbtnNewRadioButton_4.setSelected(false);
             }
         });
-        rdbtnNewRadioButton_1.setBounds(89, 55, 56, 23);
+        rdbtnNewRadioButton_1.setBounds(100, 55, 65, 23);
         rdbtnNewRadioButton_1.setFont(new Font("宋体", Font.BOLD, 16));
         evaluateframe.getContentPane().add(rdbtnNewRadioButton_1);
 
@@ -63,7 +66,7 @@ public class CommentFrame {
 
             }
         });
-        rdbtnNewRadioButton_2.setBounds(147, 55, 52, 23);
+        rdbtnNewRadioButton_2.setBounds(171, 55, 68, 23);
         rdbtnNewRadioButton_2.setFont(new Font("宋体", Font.BOLD, 16));
         evaluateframe.getContentPane().add(rdbtnNewRadioButton_2);
 
@@ -76,7 +79,7 @@ public class CommentFrame {
                 rdbtnNewRadioButton_4.setSelected(false);
             }
         });
-        rdbtnNewRadioButton_3.setBounds(209, 55, 57, 23);
+        rdbtnNewRadioButton_3.setBounds(245, 55, 68, 23);
         rdbtnNewRadioButton_3.setFont(new Font("宋体", Font.BOLD, 16));
         evaluateframe.getContentPane().add(rdbtnNewRadioButton_3);
 
@@ -89,7 +92,7 @@ public class CommentFrame {
                 rdbtnNewRadioButton_3.setSelected(false);
             }
         });
-        rdbtnNewRadioButton_4.setBounds(279, 55, 51, 23);
+        rdbtnNewRadioButton_4.setBounds(319, 55, 70, 23);
         rdbtnNewRadioButton_4.setFont(new Font("宋体", Font.BOLD, 16));
         evaluateframe.getContentPane().add(rdbtnNewRadioButton_4);
 
@@ -97,11 +100,11 @@ public class CommentFrame {
         btnNewButton999.setIcon(new ImageIcon("src/images/提交.png"));
         btnNewButton999.addActionListener(new ActionListener() {//评价提交
             public void actionPerformed(ActionEvent e) {
-            	btn_commitActionPerformed(e);
+                btn_commitActionPerformed(e);
             }
         });
         btnNewButton999.setFont(new Font("宋体", Font.BOLD, 16));
-        btnNewButton999.setBounds(33, 299, 97, 23);
+        btnNewButton999.setBounds(162, 288, 97, 23);
         evaluateframe.getContentPane().add(btnNewButton999);
 
         JLabel lblNewLabel998 = new JLabel("口味如何？对包装服务满意吗");
@@ -117,29 +120,29 @@ public class CommentFrame {
         textArea999.setBounds(26, 121, 413, 154);
         evaluateframe.getContentPane().add(textArea999);
     }
-/********************************消息响应函数**********************************/
+    /********************************消息响应函数**********************************/
     private void btn_commitActionPerformed(ActionEvent e) {
-    	 int evaluategrade;
-         String comment = textArea999.getText();
-         if (rdbtnNewRadioButton.isSelected())
-             evaluategrade = 1;
-         else if (rdbtnNewRadioButton_1.isSelected())
-             evaluategrade = 2;
-         else if (rdbtnNewRadioButton_2.isSelected())
-             evaluategrade = 3;
-         else if (rdbtnNewRadioButton_3.isSelected())
-             evaluategrade = 4;
-         else
-             evaluategrade = 5;
-         Evaluate evaluate = new Evaluate();
-         evaluate.ordernum = ordernum;    
-         evaluate.comment = comment;
-         evaluate.grade = evaluategrade;
-         Evaluate.addEvaluate(evaluate);//增加评价
-         int store_id=Userorder.getStore_id(ordernum);//获取该订单对应的商店号
-         Evaluate.updateStoreGrade(store_id);//更新商店评分
-         JOptionPane.showMessageDialog(null, "评价成功！", "提示", JOptionPane.PLAIN_MESSAGE);
-         evaluateframe.dispose();
-         Userorder.updateOrderstatus(ordernum, "订单已评价");
-	 }
+        int evaluategrade;
+        String comment = textArea999.getText();
+        if (rdbtnNewRadioButton.isSelected())
+            evaluategrade = 1;
+        else if (rdbtnNewRadioButton_1.isSelected())
+            evaluategrade = 2;
+        else if (rdbtnNewRadioButton_2.isSelected())
+            evaluategrade = 3;
+        else if (rdbtnNewRadioButton_3.isSelected())
+            evaluategrade = 4;
+        else
+            evaluategrade = 5;
+        Evaluate evaluate = new Evaluate();
+        evaluate.ordernum = ordernum;
+        evaluate.comment = comment;
+        evaluate.grade = evaluategrade;
+        Evaluate.addEvaluate(evaluate);//增加评价
+        int store_id=Userorder.getStore_id(ordernum);//获取该订单对应的商店号
+        Evaluate.updateStoreGrade(store_id);//更新商店评分
+        JOptionPane.showMessageDialog(null, "评价成功！", "提示", JOptionPane.PLAIN_MESSAGE);
+        evaluateframe.dispose();
+        Userorder.updateOrderstatus(ordernum, "订单已评价");
+    }
 }

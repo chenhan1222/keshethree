@@ -1,33 +1,19 @@
 package student_end;
 
-import java.awt.Desktop;
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JComboBox;
-import javax.swing.JScrollPane;
-import java.awt.Font;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
-
 import Login.LoginFrame;
 import control_packet.TableRefresh;
-import data.Staff;
-import data.Store;
 import data.Tuition_fee;
-import management_end.Store_bindingFrame;
 import tabletools.MyTuition_feeTableModel;
 
-import javax.swing.DefaultComboBoxModel;
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
-import java.awt.event.ActionEvent;
 
 public class MyTuition_feeFrame {
 	public JFrame frame;
@@ -76,7 +62,7 @@ public class MyTuition_feeFrame {
 			}
 		});
 		btnNewButton.setFont(new Font("ËÎÌו", Font.BOLD, 14));
-		btnNewButton.setBounds(26, 45, 93, 30);
+		btnNewButton.setBounds(26, 45, 104, 30);
 		frame.getContentPane().add(btnNewButton);
 
 		JLabel lblNewLabel = new JLabel("\u5E74\u4EFD:");

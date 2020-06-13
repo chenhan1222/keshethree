@@ -1,15 +1,12 @@
 package student_end;
 
-import java.awt.EventQueue;
-
-import javax.swing.*;
-
 import control_packet.FrameChange;
 import teacher_end.StudentSchedule;
 
-import java.awt.Font;
-import java.awt.event.ActionListener;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class StudentMainFrame {
 
@@ -57,7 +54,7 @@ public class StudentMainFrame {
 				window.frame.setVisible(true);
 			}
 		});
-		btnNewButton.setBounds(117, 82, 104, 42);
+		btnNewButton.setBounds(137, 82, 104, 42);
 		frame.getContentPane().add(btnNewButton);
 
 		JButton btnNewButton_1 = new JButton();
@@ -82,7 +79,7 @@ public class StudentMainFrame {
 				window.studentschedule.setVisible(true);
 			}
 		});
-		btnNewButton_2.setBounds(117, 247, 104, 42);
+		btnNewButton_2.setBounds(137, 247, 104, 42);
 		frame.getContentPane().add(btnNewButton_2);
 
 		JButton btnNewButton_3 = new JButton();
@@ -100,22 +97,22 @@ public class StudentMainFrame {
 
 		JLabel lblNewLabel = new JLabel("\u4E2A\u4EBA\u4FE1\u606F\u7BA1\u7406\uFF1A");
 		lblNewLabel.setFont(new Font("宋体", Font.BOLD, 14));
-		lblNewLabel.setBounds(23, 92, 104, 20);
+		lblNewLabel.setBounds(14, 92, 113, 20);
 		frame.getContentPane().add(lblNewLabel);
 
 		JLabel lblNewLabel_1 = new JLabel("\u6821\u56ED\u8BA2\u9910\uFF1A");//校园订餐：
 		lblNewLabel_1.setFont(new Font("宋体", Font.BOLD, 14));
-		lblNewLabel_1.setBounds(275, 92, 83, 20);
+		lblNewLabel_1.setBounds(255, 92, 83, 20);
 		frame.getContentPane().add(lblNewLabel_1);
 
 		JLabel lblNewLabel_2 = new JLabel("\u7B54\u7591\u9884\u7EA6:");
 		lblNewLabel_2.setFont(new Font("宋体", Font.BOLD, 14));
-		lblNewLabel_2.setBounds(34, 259, 93, 20);
+		lblNewLabel_2.setBounds(14, 259, 93, 20);
 		frame.getContentPane().add(lblNewLabel_2);
 
 		JLabel lblNewLabel_3 = new JLabel("\u5B66\u8D39\u7F34\u7EB3\uFF1A");
 		lblNewLabel_3.setFont(new Font("宋体", Font.BOLD, 14));
-		lblNewLabel_3.setBounds(275, 259, 93, 20);
+		lblNewLabel_3.setBounds(255, 259, 93, 20);
 		frame.getContentPane().add(lblNewLabel_3);
 	}
 }

@@ -60,12 +60,12 @@ public class StudentMessageFrame {
 
         label_1 = new JLabel("请输入你的姓名：");
         label_1.setFont(new Font("宋体", Font.BOLD, 13));
-        label_1.setBounds(12, 25, 104, 19);
+        label_1.setBounds(12, 25, 115, 19);
         studentmessageframe.getContentPane().add(label_1);
 
         textField_01 = new JTextField();
         textField_01.setFont(new Font("宋体", Font.BOLD, 14));
-        textField_01.setBounds(119, 23, 138, 21);
+        textField_01.setBounds(141, 23, 138, 21);
         studentmessageframe.getContentPane().add(textField_01);
         textField_01.setColumns(10);
 
@@ -81,12 +81,12 @@ public class StudentMessageFrame {
 
         label_2 = new JLabel("\u7ED9\u8001\u5E08\u7684\u7559\u8A00\uFF1A");
         label_2.setFont(new Font("宋体", Font.BOLD, 13));
-        label_2.setBounds(12, 72, 104, 19);
+        label_2.setBounds(12, 72, 115, 19);
         studentmessageframe.getContentPane().add(label_2);
 
         textField_02 = new JTextField();
         textField_02.setFont(new Font("宋体", Font.BOLD, 14));
-        textField_02.setBounds(119, 70, 138, 21);
+        textField_02.setBounds(141, 70, 138, 21);
         studentmessageframe.getContentPane().add(textField_02);
         textField_02.setColumns(10);
     }

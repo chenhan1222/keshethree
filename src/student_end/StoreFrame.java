@@ -1,20 +1,18 @@
 package student_end;
-import data.*;
+
 import Login.LoginFrame;
 import control_packet.FrameChange;
 import control_packet.TableRefresh;
+import data.*;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableCellRenderer;
-import javax.swing.table.TableColumnModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Vector;
 
 public class StoreFrame {
     public static List<Order_goods> ordergoodslist;//记录订单中的物品编号和数量
@@ -53,7 +51,7 @@ public class StoreFrame {
     private void initialize() {
         usernum = LoginFrame.usernum;
         store_id = CustomerFrame.store_id;
-        
+
         frame = new JFrame();
         frame.setTitle("欢迎来到" + Store.getStoreName(store_id));//设置标题
         frame.setBounds(100, 100, 970, 760);
@@ -73,7 +71,7 @@ public class StoreFrame {
 
         JLabel lblNewLabel001 = new JLabel("\u8F93\u5165\u5546\u54C1\u540D\uFF1A");
         lblNewLabel001.setFont(new Font("宋体", Font.BOLD, 16));
-        lblNewLabel001.setBounds(10, 51, 97, 19);
+        lblNewLabel001.setBounds(10, 51, 126, 19);
         frame.getContentPane().add(lblNewLabel001);
 
         textField001 = new JTextField();
@@ -86,7 +84,7 @@ public class StoreFrame {
         btnNewButton005.setIcon(new ImageIcon("src/images/搜索.png"));
         btnNewButton005.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {    //搜索商品
-            	btn_selectGoodsActionPerformed(e);
+                btn_selectGoodsActionPerformed(e);
             }
         });
         btnNewButton005.setFont(new Font("宋体", Font.BOLD, 14));
@@ -97,7 +95,7 @@ public class StoreFrame {
         btnNewButton_001.setIcon(new ImageIcon("src/images/浏览.png"));
         btnNewButton_001.addActionListener(new ActionListener() {            //获取全部商品
             public void actionPerformed(ActionEvent e) {
-            	btn_getAllGoodsActionPerformed(e);
+                btn_getAllGoodsActionPerformed(e);
             }
         });
         btnNewButton_001.setFont(new Font("宋体", Font.BOLD, 14));
@@ -108,11 +106,11 @@ public class StoreFrame {
         btnNewButton_100.setIcon(new ImageIcon("src/images/添加.png"));
         btnNewButton_100.addActionListener(new ActionListener() {            //加入购物车按钮
             public void actionPerformed(ActionEvent e) {
-            	btn_AddGoodsIntoShoppintlistActionPerformed(e);
+                btn_AddGoodsIntoShoppintlistActionPerformed(e);
             }
         });
         btnNewButton_100.setFont(new Font("宋体", Font.BOLD, 14));
-        btnNewButton_100.setBounds(756, 321, 136, 27);
+        btnNewButton_100.setBounds(756, 321, 157, 27);
         frame.getContentPane().add(btnNewButton_100);
 
         btnNewButton_002 = new JButton("");
@@ -122,7 +120,7 @@ public class StoreFrame {
             btnNewButton_002.setIcon(new ImageIcon("src/images/未关注.png"));
         btnNewButton_002.addActionListener(new ActionListener() {            //添加关心的店铺
             public void actionPerformed(ActionEvent e) {
-            	btn_addFollowStoreActionPerformed(e);
+                btn_addFollowStoreActionPerformed(e);
             }
         });
 
@@ -140,18 +138,18 @@ public class StoreFrame {
         btnNewButton.setIcon(new ImageIcon("src/images/结算.png"));
         btnNewButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {             //结算按钮
-            	btn_payActionPerformed( e);
+                btn_payActionPerformed( e);
             }
         });
         btnNewButton.setFont(new Font("宋体", Font.BOLD, 14));
-        btnNewButton.setBounds(756, 495, 136, 27);
+        btnNewButton.setBounds(756, 495, 157, 27);
         frame.getContentPane().add(btnNewButton);
 
         JButton btnNewButton_1 = new JButton("购物篮");
         btnNewButton_1.setIcon(new ImageIcon("src/images/购物车.png"));
         btnNewButton_1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {//购物车按钮
-              TableRefresh.refreshShoppinListTable(usernum, store_id, table);
+                TableRefresh.refreshShoppinListTable(usernum, store_id, table);
             }
         });
         btnNewButton_1.setFont(new Font("宋体", Font.BOLD, 14));
@@ -162,11 +160,11 @@ public class StoreFrame {
         btnNewButton_2.setIcon(new ImageIcon("src/images/从购物车删除.png"));
         btnNewButton_2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {            //从购物篮中删除
-            	btn_deleteGoodsFromShoppintlistActionPerformed(e);
+                btn_deleteGoodsFromShoppintlistActionPerformed(e);
             }
         });
         btnNewButton_2.setFont(new Font("宋体", Font.BOLD, 14));
-        btnNewButton_2.setBounds(756, 405, 136, 27);
+        btnNewButton_2.setBounds(756, 405, 157, 27);
         frame.getContentPane().add(btnNewButton_2);
 
         JButton btnNewButton_3 = new JButton("联系商家");//联系电话
@@ -193,11 +191,11 @@ public class StoreFrame {
         btnNewButton_4.setIcon(new ImageIcon("src/images/查看评论.png"));
         btnNewButton_4.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-            	btn_lookreviewActionPerformed(e);
+                btn_lookreviewActionPerformed(e);
             }
         });
         btnNewButton_4.setFont(new Font("宋体", Font.BOLD, 14));
-        btnNewButton_4.setBounds(449, 18, 111, 25);
+        btnNewButton_4.setBounds(449, 18, 130, 25);
         frame.getContentPane().add(btnNewButton_4);
     }
 /********************************消息响应函数**********************************/
@@ -205,14 +203,14 @@ public class StoreFrame {
      * 浏览全部商品
      * */
     private void btn_getAllGoodsActionPerformed(ActionEvent e) {
-    	  List<Goods> goodslist = Goods.getgoods(store_id);
-    	  TableRefresh.refreshStudent_GoodsTable(goodslist, table);
-    }  
+        List<Goods> goodslist = Goods.getgoods(store_id);
+        TableRefresh.refreshStudent_GoodsTable(goodslist, table);
+    }
     /**
      * 搜索商品
      * */
     private void btn_selectGoodsActionPerformed(ActionEvent e) {
-    	String Str = textField001.getText();
+        String Str = textField001.getText();
         List<Goods> goodslist = Goods.getgoods(store_id, Str, Str);
         TableRefresh.refreshStudent_GoodsTable(goodslist, table);
     }
@@ -220,76 +218,76 @@ public class StoreFrame {
      * 查看评论
      * */
     private void btn_lookreviewActionPerformed(ActionEvent e) {
-    	UserRemarkFrame window = new UserRemarkFrame();
+        UserRemarkFrame window = new UserRemarkFrame();
         window.frame.setVisible(true);
         FrameChange.setCenter(window.frame);
-    }  
+    }
     /**
      * 添加商品进入购物车
      * */
     private void btn_AddGoodsIntoShoppintlistActionPerformed(ActionEvent e) {
-     	DefaultTableModel dtm=( DefaultTableModel)table.getModel();	 
-     	int ifselectcolumn = dtm.findColumn("是否选中");
-     	int idcolumn = dtm.findColumn("编号");
-     	int buynumcolumn = dtm.findColumn("购买数量");
-    	for (int i = 0; i < table.getRowCount(); i++) {
-         	String getvalue = table.getValueAt(i, ifselectcolumn).toString(); 	
-         	int goods_id = Integer.valueOf(table.getValueAt(i, idcolumn).toString());
-             int buynum = Integer.valueOf(table.getValueAt(i, buynumcolumn).toString());
-             if (getvalue.equals("true"))
-                 Shoppinglist.addShoppinglist(usernum, store_id, goods_id, buynum);
-         }
-    }  
+        DefaultTableModel dtm=( DefaultTableModel)table.getModel();
+        int ifselectcolumn = dtm.findColumn("是否选中");
+        int idcolumn = dtm.findColumn("编号");
+        int buynumcolumn = dtm.findColumn("购买数量");
+        for (int i = 0; i < table.getRowCount(); i++) {
+            String getvalue = table.getValueAt(i, ifselectcolumn).toString();
+            int goods_id = Integer.valueOf(table.getValueAt(i, idcolumn).toString());
+            int buynum = Integer.valueOf(table.getValueAt(i, buynumcolumn).toString());
+            if (getvalue.equals("true"))
+                Shoppinglist.addShoppinglist(usernum, store_id, goods_id, buynum);
+        }
+    }
     /**
      * 从购物车中删除商品
      * */
     private void btn_deleteGoodsFromShoppintlistActionPerformed(ActionEvent e) {
-     	DefaultTableModel dtm=( DefaultTableModel)table.getModel();	 
-    	int ifselectcolumn = dtm.findColumn("是否选中");
-     	int idcolumn = dtm.findColumn("编号");      
-     	for (int i = 0; i < table.getRowCount(); i++) {       	
-         	String getvalue = table.getValueAt(i, ifselectcolumn).toString();
-             int goods_id = Integer.valueOf(table.getValueAt(i, idcolumn).toString());
-             if (getvalue == "true")
-                 Shoppinglist.deleteFromShoppinglist(usernum, store_id, goods_id);
-         }
-         TableRefresh.refreshShoppinListTable(usernum, store_id, table);
-    }  
+        DefaultTableModel dtm=( DefaultTableModel)table.getModel();
+        int ifselectcolumn = dtm.findColumn("是否选中");
+        int idcolumn = dtm.findColumn("编号");
+        for (int i = 0; i < table.getRowCount(); i++) {
+            String getvalue = table.getValueAt(i, ifselectcolumn).toString();
+            int goods_id = Integer.valueOf(table.getValueAt(i, idcolumn).toString());
+            if (getvalue == "true")
+                Shoppinglist.deleteFromShoppinglist(usernum, store_id, goods_id);
+        }
+        TableRefresh.refreshShoppinListTable(usernum, store_id, table);
+    }
     /**
      * 结算
      * */
     private void btn_payActionPerformed(ActionEvent e) {
-    	 ordergoodslist = new ArrayList<Order_goods>();
-         DefaultTableModel model = (DefaultTableModel) table.getModel();
-         int sfxzcolumn = model.findColumn("是否选中");//获得标题是是否选中的列
-         int gmslcolumn = model.findColumn("购买数量");//获得标题是购买数量的列
-         for (int i = 0; i < table.getRowCount(); i++) {
-             String value = table.getValueAt(i, sfxzcolumn).toString();//读取你获取行号的某一列的值（也就是字段）
-             int goods_id = Integer.valueOf(table.getValueAt(i, 0).toString());
-             int buynum = Integer.valueOf(table.getValueAt(i, gmslcolumn).toString());
-             if (value.equals("true")) {
-                 Order_goods order_goods = new Order_goods();
-                 order_goods.store_id = store_id;
-                 order_goods.goods_id = goods_id;
-                 order_goods.buynum = buynum;
-                 ordergoodslist.add(order_goods);
-               
-             }
-         }
-         PayFrame window = new PayFrame();
-         window.frame.setVisible(true);
-         FrameChange.setCenter(window.frame);
-    }  
+        ordergoodslist = new ArrayList<Order_goods>();
+        DefaultTableModel model = (DefaultTableModel) table.getModel();
+        int sfxzcolumn = model.findColumn("是否选中");//获得标题是是否选中的列
+        int gmslcolumn = model.findColumn("购买数量");//获得标题是购买数量的列
+        for (int i = 0; i < table.getRowCount(); i++) {
+            String value = table.getValueAt(i, sfxzcolumn).toString();//读取你获取行号的某一列的值（也就是字段）
+            int goods_id = Integer.valueOf(table.getValueAt(i, 0).toString());
+            int buynum = Integer.valueOf(table.getValueAt(i, gmslcolumn).toString());
+            if (value.equals("true")) {
+                Order_goods order_goods = new Order_goods();
+                order_goods.store_id = store_id;
+                order_goods.goods_id = goods_id;
+                order_goods.buynum = buynum;
+                ordergoodslist.add(order_goods);
+
+            }
+        }
+        PayFrame window = new PayFrame();
+        window.frame.setVisible(true);
+        FrameChange.setCenter(window.frame);
+    }
     /**
      * 添加关心的店铺
      * */
     private void btn_addFollowStoreActionPerformed(ActionEvent e) {
-    	 if (!Student.ifFollow(usernum, store_id)) {
-         	Student.addUserfollow(usernum, store_id);
-             btnNewButton_002.setIcon(new ImageIcon("src/images/关注.png"));
-         } else {
-         	Student.deleteUserfollow(usernum, store_id);
-             btnNewButton_002.setIcon(new ImageIcon("src/images/未关注.png"));
-         }
+        if (!Student.ifFollow(usernum, store_id)) {
+            Student.addUserfollow(usernum, store_id);
+            btnNewButton_002.setIcon(new ImageIcon("src/images/关注.png"));
+        } else {
+            Student.deleteUserfollow(usernum, store_id);
+            btnNewButton_002.setIcon(new ImageIcon("src/images/未关注.png"));
+        }
     }
 }
